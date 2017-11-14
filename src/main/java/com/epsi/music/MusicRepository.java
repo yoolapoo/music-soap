@@ -5,34 +5,48 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import javax.annotation.PostConstruct;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Component
 public class MusicRepository {
-    private static final Map<Integer,Music> musics = new HashMap<>();
+    private static final Map<String, Music> musics = new HashMap<>();
 
     @PostConstruct
-    public void initData(){
+    public void initData() {
 
         Music astonishing = new Music();
         astonishing.setAuthor("Dream Theater");
-        astonishing.setId(1);
-        astonishing.setIsbn("123456789");
+        astonishing.setId("1");
+        astonishing.setGenre("Metal Progressive");
         astonishing.setTitle("The Astonishing");
-        musics.put(astonishing.getId(),astonishing);
+        astonishing.setCreation("2016/01/29");
+        musics.put(astonishing.getId(), astonishing);
 
 
         Music similitude = new Music();
         similitude.setAuthor("The Neal Morse Band");
-        similitude.setId(2);
-        similitude.setIsbn("987654321");
+        similitude.setId("2");
+        similitude.setCreation("2016/11/11");
+        similitude.setGenre("Christian Metal Progressive Rock");
         similitude.setTitle("The Similitude Of A Dream");
-        musics.put(similitude.getId(),similitude);
+        musics.put(similitude.getId(), similitude);
     }
 
-    public Music findMusic(Integer id) {
+/*    public Optional<Music> getMusic(String id) {
+        Optional<Music> music = Optional.of(musics.get(id));
+        if(music.isPresent()){
+            Assert.notNull(id, "The music's id must not be null");
+            return music;
+        }
+        return Optional.empty();*/
+
+    public Music getMusic(String id) {
         Assert.notNull(id, "The music's id must not be null");
         return musics.get(id);
+    }
+    public List<Music> getMusics(){
+        List<Music> musics = new ArrayList<>();
+        musics.
+        return musics;
     }
 }

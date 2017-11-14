@@ -1,5 +1,8 @@
 package com.epsi.music;
 
+import com.epsi.music.mapper.MusicMapper;
+import com.epsi.music.service.MusicService;
+import com.epsi.music.service.impl.JdbcMusicServiceImpl;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -37,5 +40,10 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     @Bean
     public XsdSchema musicsSchema() {
         return new SimpleXsdSchema(new ClassPathResource("music.xsd"));
+    }
+
+    @Bean
+    public MusicService jdbcmusicService(MusicMapper musicMapper){
+        return new JdbcMusicServiceImpl(musicMapper);
     }
 }

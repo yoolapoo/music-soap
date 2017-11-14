@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2017.11.06 à 02:32:47 PM CET 
+// Généré le : 2017.11.07 à 03:59:55 PM CET 
 //
 
 
@@ -24,10 +24,11 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="author" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="isbn" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="genre" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="creation" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -41,31 +42,43 @@ import javax.xml.bind.annotation.XmlType;
     "id",
     "title",
     "author",
-    "isbn"
+    "genre",
+    "creation"
 })
 public class Music {
 
-    protected int id;
+    @XmlElement(required = true)
+    protected String id;
     @XmlElement(required = true)
     protected String title;
     @XmlElement(required = true)
     protected String author;
     @XmlElement(required = true)
-    protected String isbn;
+    protected String genre;
+    @XmlElement(required = true)
+    protected String creation;
 
     /**
      * Obtient la valeur de la propriété id.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public int getId() {
+    public String getId() {
         return id;
     }
 
     /**
      * Définit la valeur de la propriété id.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setId(int value) {
+    public void setId(String value) {
         this.id = value;
     }
 
@@ -118,27 +131,51 @@ public class Music {
     }
 
     /**
-     * Obtient la valeur de la propriété isbn.
+     * Obtient la valeur de la propriété genre.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getIsbn() {
-        return isbn;
+    public String getGenre() {
+        return genre;
     }
 
     /**
-     * Définit la valeur de la propriété isbn.
+     * Définit la valeur de la propriété genre.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setIsbn(String value) {
-        this.isbn = value;
+    public void setGenre(String value) {
+        this.genre = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété creation.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCreation() {
+        return creation;
+    }
+
+    /**
+     * Définit la valeur de la propriété creation.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCreation(String value) {
+        this.creation = value;
     }
 
 }

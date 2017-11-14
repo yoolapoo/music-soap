@@ -1,5 +1,6 @@
 package com.epsi.music;
 
+
 import io.spring.guides.gs_producing_web_service.GetMusicRequest;
 import io.spring.guides.gs_producing_web_service.GetMusicResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+
+import java.util.Optional;
 
 @Endpoint
 public class MusicEndpoint {
@@ -23,7 +26,7 @@ public class MusicEndpoint {
     @ResponsePayload
     public GetMusicResponse getCountry(@RequestPayload GetMusicRequest request) {
         GetMusicResponse response = new GetMusicResponse();
-        response.setMusic(musicRepository.findMusic(request.getId()));
+        response.setMusic(musicRepository.getMusic(request.getId()));
 
         return response;
     }
