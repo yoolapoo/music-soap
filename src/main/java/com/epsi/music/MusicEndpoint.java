@@ -24,7 +24,7 @@ public class MusicEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getMusicRequest")
     @ResponsePayload
-    public GetMusicResponse getCountry(@RequestPayload GetMusicRequest request) {
+    public GetMusicResponse getMusic(@RequestPayload GetMusicRequest request) {
         GetMusicResponse response = new GetMusicResponse();
         response.setMusic(musicRepository.getMusic(request.getId()));
 

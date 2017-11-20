@@ -25,4 +25,5 @@ public class JdbcMusicServiceImpl implements MusicService {
     public List<Music> findAll() {
         return this.musicMapper.findAll();
     }
+
 }
