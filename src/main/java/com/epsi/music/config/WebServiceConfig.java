@@ -1,4 +1,4 @@
-package com.epsi.music;
+package com.epsi.music.config;
 
 import com.epsi.music.mapper.MusicMapper;
 import com.epsi.music.service.MusicService;

@@ -43,16 +43,16 @@ public class MusicRepository {
         }
         return Optional.empty();*/
 
-    public Music getMusic(String id) {
-        List<Music> liste = musicService.findById(id);
-        liste.forEach(music->{
-            musics.put(id,music);
-        });
-        Assert.notNull(id, "The music's id must not be null");
-        return musics.get(id);
-    }
-    public List<Music> getMusics(){
-        List<Music> musics = musicService.findAll();
-        return musics;
-    }
+//    public Music getMusic(String id) {
+//        List<Music> liste = musicService.findById(id);
+//        liste.forEach(music->{
+//            musics.put(id,music);
+//        });
+//        Assert.notNull(id, "The music's id must not be null");
+//        return musics.get(id);
+//    }
+//    public List<Music> getMusics(){
+//        List<Music> musics = musicService.findAll();
+//        return musics;
+//    }
 }

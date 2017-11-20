@@ -10,15 +10,15 @@ WITH (
 OIDS=FALSE
 );
 
-DROP TABLE IF EXISTS media;
-CREATE TABLE media
+DROP TABLE IF EXISTS music;
+CREATE TABLE music
 (
-  id_media text,
+  id_music text,
   author text,
   title text,
   creation text,
   genre text,
-  CONSTRAINT music_pkey PRIMARY KEY(id_media)
+  CONSTRAINT music_pkey PRIMARY KEY(id_music)
 )
 WITH (
 OIDS=FALSE
@@ -42,10 +42,18 @@ DROP TABLE IF EXISTS loan;
 CREATE TABLE loan
 (
   id_loan text,
-  id_media text REFERENCES media (id_media),
+  id_music text REFERENCES music (id_music),
   id_user text REFERENCES users (id_user),
-  CONSTRAINT loan_pkey PRIMARY KEY (id_media,id_user)
+  CONSTRAINT loan_pkey PRIMARY KEY (id_music,id_user)
 )
 WITH (
 OIDS=FALSE
 );
+
+
+INSERT INTO music (id_music, author, title, creation, genre)
+VALUES ('1','Dream Theater','The Astonishing','Metal Progressive Rock','2016/01/29');
+
+INSERT INTO music (id_music, author, title, creation, genre)
+VALUES ('2','The Neal Morse Band','The Similitude of a Dream','Christian Metal Progressive Rock','2016/11/11');
+

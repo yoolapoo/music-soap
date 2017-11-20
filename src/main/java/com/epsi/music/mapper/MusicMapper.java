@@ -12,10 +12,10 @@ import java.util.Optional;
 @Component
 public interface MusicMapper {
 
-    @Select("SELECT * FROM media WHERE id_media = #{id}")
+    @Select("SELECT * FROM media WHERE id_media = #{id} ")
     List<Music> findById(String id);
 
-    @Select("SELECT * FROM media")
+    @Select("SELECT * FROM media ")
     List<Music> findAll();
 
 }
