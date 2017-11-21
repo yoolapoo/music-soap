@@ -5,10 +5,10 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class Music {
-    private String id;
+public class MusicDto {
+    private String id_music;
     private String author;
     private String title;
-    private Date created;
+    private String creation;
     private String genre;
 }

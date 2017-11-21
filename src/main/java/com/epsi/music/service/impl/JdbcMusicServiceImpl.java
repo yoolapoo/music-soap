@@ -5,6 +5,7 @@ import com.epsi.music.mapper.MusicMapper;
 import com.epsi.music.service.MusicService;
 
 import java.util.List;
+import java.util.Optional;
 
 public class JdbcMusicServiceImpl implements MusicService {
 
@@ -17,7 +18,7 @@ public class JdbcMusicServiceImpl implements MusicService {
     }
 
     @Override
-    public List<Music> findById(String id){
+    public Optional<Music> findById(String id){
         return this.musicMapper.findById(id);
     }
 
