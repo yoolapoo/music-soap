@@ -1,16 +1,15 @@
 package com.epsi.music;
 
-import com.epsi.music.domain.Music;
+import com.epsi.music.domain.Media;
 import com.epsi.music.service.MusicService;
 import org.springframework.stereotype.Component;
-import org.springframework.util.Assert;
 
 import javax.annotation.PostConstruct;
 import java.util.*;
 
 @Component
 public class MusicRepository {
-    private static final Map<String, Music> musics = new HashMap<>();
+    private static final Map<String, Media> musics = new HashMap<>();
     private MusicService musicService;
 
     @PostConstruct

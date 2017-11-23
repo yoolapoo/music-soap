@@ -1,7 +1,6 @@
 package com.epsi.music.dto;
 
-import com.epsi.music.domain.MusicDto;
-import io.spring.guides.gs_producing_web_service.Music;
+import com.epsi.music.domain.Media;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -16,7 +15,7 @@ public interface MusicConverter {
             @Mapping(source = "genre", target = "genre"),
             @Mapping(source = "creation", target = "creation")
     })
-    MusicDto musictoMusicDto(Music music);
+    Media musictoMusicDto(io.spring.guides.gs_producing_web_service.Music music);
 
     @Mappings({
             @Mapping(source = "id_music", target = "id"),
@@ -25,7 +24,7 @@ public interface MusicConverter {
             @Mapping(source = "genre", target = "genre"),
             @Mapping(source = "creation", target = "creation")
     })
-    Music musicDtoToMusic(MusicDto musicDto);
+    io.spring.guides.gs_producing_web_service.Music musicDtoToMusic(Media musicDto);
 
 
 }

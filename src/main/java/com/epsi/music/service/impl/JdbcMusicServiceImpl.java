@@ -1,6 +1,6 @@
 package com.epsi.music.service.impl;
 
-import com.epsi.music.domain.Music;
+import com.epsi.music.domain.Media;
 import com.epsi.music.mapper.MusicMapper;
 import com.epsi.music.service.MusicService;
 
@@ -18,12 +18,12 @@ public class JdbcMusicServiceImpl implements MusicService {
     }
 
     @Override
-    public Optional<Music> findById(String id){
+    public Optional<Media> findById(String id){
         return this.musicMapper.findById(id);
     }
 
     @Override
-    public List<Music> findAll() {
+    public List<Media> findAll() {
         return this.musicMapper.findAll();
     }
 
