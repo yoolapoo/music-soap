@@ -18,7 +18,7 @@ public class JdbcMusicServiceImpl implements MusicService {
     }
 
     @Override
-    public Optional<Media> findById(String id){
+    public Optional<Media> findById(long id) {
         return this.musicMapper.findById(id);
     }
 

@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface MusicMapper {
 
     @Select("SELECT * FROM media WHERE id_media = #{id} ")
-    Optional<Media> findById(String id);
+    Optional<Media> findById(long id);
 
     @Select("SELECT * FROM media ")
     List<Media> findAll();

@@ -6,6 +6,6 @@ spring:
         #expiration time in seconds (eq. 60 hours)
       #  expiration: 216000
   datasource:
-    url:  "jdbc:postgresql://localhost:5432/music"
+    url:  "jdbc:postgresql://localhost:5432/mediatheque"
     username: postgres
     password: admin

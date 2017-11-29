@@ -2,7 +2,6 @@ package com.epsi.music.domain;
 
 import lombok.Data;
 
-import java.util.Date;
 
 @Data
 public class Media {

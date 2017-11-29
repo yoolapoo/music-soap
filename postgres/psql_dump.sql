@@ -52,10 +52,11 @@ OIDS=FALSE
 );
 
 INSERT INTO media (id_media, type_media, author, title, creation, genre)
-VALUES (1,'music', 'Dream Theater', 'The Astonishing','Metal Progressive Rock','2016/01/29');
+VALUES (1, 'music', 'Dream Theater', 'The Astonishing', '2016/01/29', 'Metal Progressive Rock');
 
 INSERT INTO media (id_media, type_media, author, title, creation, genre)
-VALUES (2,'music','The Neal Morse Band','The Similitude of a Dream','Christian Metal Progressive Rock','2016/11/11');
+VALUES
+  (2, 'music', 'The Neal Morse Band', 'The Similitude of a Dream', '2016/11/11', 'Christian Metal Progressive Rock');
 
 INSERT INTO media (id_media, type_media, author, title, creation, genre)
 VALUES(3,'movie','Steven Spielberg','E.T','1982/12/01','Science-fiction');

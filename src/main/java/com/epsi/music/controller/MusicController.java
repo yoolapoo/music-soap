@@ -1,8 +1,7 @@
 package com.epsi.music.controller;
 
 
-import com.epsi.music.MusicRepository;
-import com.epsi.music.dto.Converter;
+import com.epsi.music.domain.Media;
 import com.epsi.music.service.MusicService;
 import io.spring.guides.gs_producing_web_service.GetMusicRequest;
 import io.spring.guides.gs_producing_web_service.GetMusicResponse;
@@ -20,7 +19,7 @@ public class MusicController {
     private static final String NAMESPACE_URI = "http://spring.io/guides/gs-producing-web-service";
 
     private MusicService musicService;
-    private Converter conv;
+    //private Converter conv;
 
     @Autowired
     public MusicController(MusicService musicService){
@@ -31,11 +30,36 @@ public class MusicController {
     @ResponsePayload
     public GetMusicResponse getMusic(@RequestPayload GetMusicRequest request) {
         GetMusicResponse response = new GetMusicResponse();
-        Music musicOptional = conv.ConverterDtoToXsd(musicService.findById(request.getId()).get());
-        response.setMusic(musicOptional);
+        Optional<Media> musicOptional = musicService.findById(request.getId());
+        Music music = new Music();
+        if (musicOptional.isPresent()) {
+            music.setId(musicOptional.get();
+
+        }
+        response.setMusic(music);
         return response;
     }
 
+
+    /**
+     * Get all musics of the library
+     *
+     * @return the musics
+     */
+    /*@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getMusicRequest")
+    @ResponsePayload
+    public List<Music> getMusics(@RequestPayload GetMusicRequest request){
+        List<Music> response = new ArrayList<>();
+
+         musicService.findAll("music").stream().forEach((musics) ->{
+             Music music = new Music();
+             music.setId(musics.get);
+         });
+
+
+        return response;
+
+    }*/
 
 
     /**
@@ -74,12 +98,7 @@ public class MusicController {
     lready returned
      */
     //void returnMusic(String id, String username) throws MusicNotFoundException, AllMusicsAlreadyReturnedException;
-    /**
-     * Get all musics of the library
-     *
-     * @return the musics
-     */
-    //List<musics> getMusics();
+
     /**
      * Return all musics with an author, a title or an ISBN matching the search term
      *
