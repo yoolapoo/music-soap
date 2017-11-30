@@ -1,8 +1,7 @@
 package com.epsi.music.controller;
 
 
-import com.epsi.music.MusicRepository;
-import com.epsi.music.dto.Converter;
+import com.epsi.music.domain.Media;
 import com.epsi.music.service.MusicService;
 import io.spring.guides.gs_producing_web_service.GetMusicRequest;
 import io.spring.guides.gs_producing_web_service.GetMusicResponse;
@@ -13,38 +12,70 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 
 @Endpoint
 public class MusicController {
     private static final String NAMESPACE_URI = "http://spring.io/guides/gs-producing-web-service";
 
     private MusicService musicService;
-    private Converter conv;
 
     @Autowired
-    public MusicController(MusicService musicService){
+    public MusicController(MusicService musicService) {
         this.musicService = musicService;
     }
 
+    /**
+     * Get a music from its id
+     *
+     * @param request the id of the wanter music
+     * @return a music with the given id if there is one
+     */
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getMusicRequest")
     @ResponsePayload
     public GetMusicResponse getMusic(@RequestPayload GetMusicRequest request) {
         GetMusicResponse response = new GetMusicResponse();
-        Music musicOptional = conv.ConverterDtoToXsd(musicService.findById(request.getId()).get());
-        response.setMusic(musicOptional);
-        return response;
+        Media media = musicService.findById(request.getName());
+        if (media.getType_media().equals("music") && media != null) {
+            Music music = new Music();
+            music.setId(request.getName());
+            music.setTitle(media.getTitle());
+            music.setAuthor(media.getAuthor());
+            music.setGenre(media.getGenre());
+            music.setCreation(media.getCreation());
+            response.setMusic(music);
+            return response;
+        } else {
+            return response;
+        }
+    }
+
+    /**
+     * Get all musics of the library
+     *
+     * @return the musics
+     */
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllMusicRequest")
+    @ResponsePayload
+    public List<Music> getMusics() {
+        List<Music> responses = new ArrayList<>();
+        musicService.findAll().stream().forEach(media -> {
+            //GetMusicResponse response = new GetMusicResponse();
+            if (media.getType_media().equals("music")) {
+                Music music = new Music();
+                music.setId(media.getId_media());
+                music.setTitle(media.getTitle());
+                music.setAuthor(media.getAuthor());
+                music.setGenre(media.getGenre());
+                music.setCreation(media.getCreation());
+                responses.add(music);
+            }
+        });
+        return responses;
     }
 
 
-
-    /**
-* Get a music from its id
-*
-* @param id the id of the wanter music
-* @return a music with the given id if there is one
-*/
-    //Optional<Music> getMusic(String id);
     /**
      * Add a music with the given ISBN
      *
@@ -74,12 +105,7 @@ public class MusicController {
     lready returned
      */
     //void returnMusic(String id, String username) throws MusicNotFoundException, AllMusicsAlreadyReturnedException;
-    /**
-     * Get all musics of the library
-     *
-     * @return the musics
-     */
-    //List<musics> getMusics();
+
     /**
      * Return all musics with an author, a title or an ISBN matching the search term
      *

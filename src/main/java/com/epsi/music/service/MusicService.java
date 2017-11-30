@@ -9,6 +9,6 @@ import java.util.Optional;
 @Service
 public interface MusicService {
 
-    Optional<Media> findById(String id);
+    Media findById(String id);
     List<Media> findAll();
 }

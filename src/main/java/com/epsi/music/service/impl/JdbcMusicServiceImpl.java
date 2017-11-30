@@ -11,14 +11,14 @@ public class JdbcMusicServiceImpl implements MusicService {
 
     private MusicMapper musicMapper;
 
-    public JdbcMusicServiceImpl(MusicMapper musicMapper){
+    public JdbcMusicServiceImpl(MusicMapper musicMapper) {
 
         super();
         this.musicMapper = musicMapper;
     }
 
     @Override
-    public Optional<Media> findById(String id){
+    public Media findById(String id) {
         return this.musicMapper.findById(id);
     }
 

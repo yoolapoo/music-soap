@@ -13,7 +13,7 @@ OIDS=FALSE
 DROP TABLE IF EXISTS media;
 CREATE TABLE media
 (
-  id_media NUMERIC,
+  id_media text,
   type_media text,
   author text,
   title text,
@@ -28,7 +28,7 @@ OIDS=FALSE
 DROP TABLE IF EXISTS users;
 CREATE TABLE users
 (
-  id_user NUMERIC,
+  id_user text,
   username text,
   email text,
   salt text,
@@ -42,9 +42,9 @@ OIDS=FALSE
 DROP TABLE IF EXISTS loan;
 CREATE TABLE loan
 (
-  id_loan NUMERIC,
-  id_media NUMERIC REFERENCES media (id_media),
-  id_user NUMERIC REFERENCES users (id_user),
+  id_loan text,
+  id_media text REFERENCES media (id_media),
+  id_user text REFERENCES users (id_user),
   CONSTRAINT loan_pkey PRIMARY KEY (id_media,id_user)
 )
 WITH (
@@ -52,17 +52,17 @@ OIDS=FALSE
 );
 
 INSERT INTO media (id_media, type_media, author, title, creation, genre)
-VALUES (1,'music', 'Dream Theater', 'The Astonishing','Metal Progressive Rock','2016/01/29');
+VALUES ('1','music', 'Dream Theater', 'The Astonishing','2016/01/29','Metal Progressive Rock');
 
 INSERT INTO media (id_media, type_media, author, title, creation, genre)
-VALUES (2,'music','The Neal Morse Band','The Similitude of a Dream','Christian Metal Progressive Rock','2016/11/11');
+VALUES ('2','music','The Neal Morse Band','The Similitude of a Dream','2016/11/11','Christian Metal Progressive Rock');
 
 INSERT INTO media (id_media, type_media, author, title, creation, genre)
-VALUES(3,'movie','Steven Spielberg','E.T','1982/12/01','Science-fiction');
+VALUES('3','movie','Steven Spielberg','E.T','1982/12/01','Science-fiction');
 
 INSERT INTO users (id_user, username, email, salt, passhash)
-VALUES(1,'ph','ph@yopmail.com','E1F53135E559C253','72AE25495A7981C40622D49F9A52E4F1565C90F048F59027BD9C8C8900D5C3D8
+VALUES('1','ph','ph@yopmail.com','E1F53135E559C253','72AE25495A7981C40622D49F9A52E4F1565C90F048F59027BD9C8C8900D5C3D8
 ');
 
 INSERT INTO loan (id_loan, id_media, id_user)
-VALUES(1,1,1);
+VALUES('1','1','1');
