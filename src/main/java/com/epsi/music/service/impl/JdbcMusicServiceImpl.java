@@ -27,4 +27,12 @@ public class JdbcMusicServiceImpl implements MusicService {
         return this.musicMapper.findAll();
     }
 
+    @Override
+    public void addMusic(Media media){this.musicMapper.addMusic(media);}
+
+    @Override
+    public void updateMusic(Media media){this.musicMapper.updateMusic(media);}
+
+    @Override
+    public List<Media> search(String searchTerm){return this.musicMapper.search(searchTerm);}
 }

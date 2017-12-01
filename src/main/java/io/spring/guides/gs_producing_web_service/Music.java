@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2017.11.30 à 05:07:51 PM CET 
+// Généré le : 2017.12.01 à 04:29:56 PM CET 
 //
 
 
@@ -25,10 +25,12 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="author" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="genre" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="creation" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="isavailable" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -40,15 +42,19 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "music", propOrder = {
     "id",
+    "type",
     "title",
     "author",
     "genre",
-    "creation"
+    "creation",
+    "isavailable"
 })
 public class Music {
 
     @XmlElement(required = true)
     protected String id;
+    @XmlElement(required = true)
+    protected String type;
     @XmlElement(required = true)
     protected String title;
     @XmlElement(required = true)
@@ -57,6 +63,7 @@ public class Music {
     protected String genre;
     @XmlElement(required = true)
     protected String creation;
+    protected boolean isavailable;
 
     /**
      * Obtient la valeur de la propriété id.
@@ -80,6 +87,30 @@ public class Music {
      */
     public void setId(String value) {
         this.id = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété type.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * Définit la valeur de la propriété type.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setType(String value) {
+        this.type = value;
     }
 
     /**
@@ -176,6 +207,22 @@ public class Music {
      */
     public void setCreation(String value) {
         this.creation = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété isavailable.
+     * 
+     */
+    public boolean isIsavailable() {
+        return isavailable;
+    }
+
+    /**
+     * Définit la valeur de la propriété isavailable.
+     * 
+     */
+    public void setIsavailable(boolean value) {
+        this.isavailable = value;
     }
 
 }

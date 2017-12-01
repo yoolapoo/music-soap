@@ -11,4 +11,5 @@ public class Media {
     private String title;
     private String creation;
     private String genre;
+    private boolean isAvailable;
 }

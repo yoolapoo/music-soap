@@ -19,6 +19,7 @@ CREATE TABLE media
   title text,
   creation text,
   genre text,
+  isAvailable BOOLEAN,
   CONSTRAINT media_pkey PRIMARY KEY(id_media)
 )
 WITH (
@@ -42,7 +43,7 @@ OIDS=FALSE
 DROP TABLE IF EXISTS loan;
 CREATE TABLE loan
 (
-  id_loan text,
+  id_loan SERIAL,
   id_media text REFERENCES media (id_media),
   id_user text REFERENCES users (id_user),
   CONSTRAINT loan_pkey PRIMARY KEY (id_media,id_user)
@@ -51,14 +52,17 @@ WITH (
 OIDS=FALSE
 );
 
-INSERT INTO media (id_media, type_media, author, title, creation, genre)
-VALUES ('1','music', 'Dream Theater', 'The Astonishing','2016/01/29','Metal Progressive Rock');
+INSERT INTO media (id_media, type_media, author, title, creation, genre,isAvailable)
+VALUES ('1','music', 'Dream Theater', 'The Astonishing','2016/01/29','Metal Progressive Rock',true);
 
-INSERT INTO media (id_media, type_media, author, title, creation, genre)
-VALUES ('2','music','The Neal Morse Band','The Similitude of a Dream','2016/11/11','Christian Metal Progressive Rock');
+INSERT INTO media (id_media, type_media, author, title, creation, genre,isAvailable)
+VALUES ('2','music','The Neal Morse Band','The Similitude of a Dream','2016/11/11','Christian Metal Progressive Rock',true);
 
-INSERT INTO media (id_media, type_media, author, title, creation, genre)
-VALUES('3','movie','Steven Spielberg','E.T','1982/12/01','Science-fiction');
+INSERT INTO media (id_media, type_media, author, title, creation, genre,isAvailable)
+VALUES('3','movie','Steven Spielberg','E.T','1982/12/01','Science-fiction',true);
+
+INSERT INTO media (id_media, type_media, author, title, creation, genre,isAvailable)
+VALUES('4','tvshow','	Damon Lindelof, J.J. Abrams','LOST','2004','Aventure, Drame, Action',true);
 
 INSERT INTO users (id_user, username, email, salt, passhash)
 VALUES('1','ph','ph@yopmail.com','E1F53135E559C253','72AE25495A7981C40622D49F9A52E4F1565C90F048F59027BD9C8C8900D5C3D8
@@ -66,3 +70,5 @@ VALUES('1','ph','ph@yopmail.com','E1F53135E559C253','72AE25495A7981C40622D49F9A5
 
 INSERT INTO loan (id_loan, id_media, id_user)
 VALUES('1','1','1');
+
+

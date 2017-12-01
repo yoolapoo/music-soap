@@ -1,6 +1,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring.io/guides/gs-producing-web-service"
            targetNamespace="http://spring.io/guides/gs-producing-web-service" elementFormDefault="qualified">
 
+    <!-- REQUESTS-->
     <xs:element name="getMusicRequest">
         <xs:complexType>
             <xs:sequence>
@@ -9,7 +10,23 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="getMusicResponse">
+    <xs:element name="getAllMusicRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="BorrowMusicRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:string"/>
+                <xs:element name="username" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="addMusicRequest">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="music" type="tns:music"/>
@@ -17,21 +34,30 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="getAllMusicRequest">
+    <!-- REQUESTS-->
+
+    <!-- RESPONSES-->
+    <xs:element name="getMusicResponse">
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="music" type="tns:music" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    <!-- RESPONSES-->
 
+    <!-- MUSIC-->
     <xs:complexType name="music">
         <xs:sequence>
             <xs:element name="id" type="xs:string"/>
+            <xs:element name="type" type="xs:string"/>
             <xs:element name="title" type="xs:string"/>
             <xs:element name="author" type="xs:string"/>
             <xs:element name="genre" type="xs:string"/>
             <xs:element name="creation" type="xs:string"/>
+            <xs:element name="isavailable" type="xs:boolean"/>
         </xs:sequence>
     </xs:complexType>
+    <!-- MUSIC-->
 
 </xs:schema>
