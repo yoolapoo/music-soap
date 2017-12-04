@@ -1,7 +1,10 @@
 package com.epsi.music.config;
 
+import com.epsi.music.mapper.LoanMapper;
 import com.epsi.music.mapper.MusicMapper;
+import com.epsi.music.service.LoanService;
 import com.epsi.music.service.MusicService;
+import com.epsi.music.service.impl.JdbcLoanServiceImpl;
 import com.epsi.music.service.impl.JdbcMusicServiceImpl;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
@@ -46,4 +49,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     public MusicService jdbcmusicService(MusicMapper musicMapper){
         return new JdbcMusicServiceImpl(musicMapper);
     }
+
+    @Bean
+    public LoanService jdbcLoanService(LoanMapper loanMapper){return new JdbcLoanServiceImpl(loanMapper);}
 }
