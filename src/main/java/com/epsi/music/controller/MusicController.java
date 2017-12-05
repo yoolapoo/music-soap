@@ -122,8 +122,8 @@ public class MusicController {
      * @throws MusicNotFoundException            if no music in the library has the given id
      * @throws AllMusicsAlreadyReturnedException if all musics with the given id are already returned
      */
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "borrowRequest")
-    public void returnMusic(@RequestPayload BorrowMusicRequest request) throws MusicNotFoundException, AllMusicsAlreadyReturnedException {
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "returnRequest")
+    public void returnMusic(@RequestPayload ReturnRequest request) throws MusicNotFoundException, AllMusicsAlreadyReturnedException {
         Media media = musicService.findById(request.getId());
         if (media == null) {
             throw new MusicNotFoundException(HttpStatus.BAD_REQUEST, MediaApiStatus.MEDIA_API_STATUS_1402.toString(), MediaApiStatus.MEDIA_API_STATUS_1402.getReason());
@@ -145,9 +145,9 @@ public class MusicController {
      * @param searchTerm the searched term
      * @return the musics matching the search term
      */
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllMusicRequest")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getMusicBySearchTermRequest")
     @ResponsePayload
-    public List<Music> searchMusics(@RequestPayload GetAllMusicRequest request) {
+    public List<Music> searchMusics(@RequestPayload GetMusicBySearchTermRequest request) {
         List<Music> responses = new ArrayList<>();
         musicService.search(request.getName()).stream().forEach(item -> {
             Music music = getInfo(item);

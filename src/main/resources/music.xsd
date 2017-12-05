@@ -18,7 +18,7 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="BorrowMusicRequest">
+    <xs:element name="borrowMusicRequest">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="id" type="xs:string"/>
@@ -26,6 +26,24 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+
+    <xs:element name="returnRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:string"/>
+                <xs:element name="username" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getMusicBySearchTermRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
     <xs:element name="addMusicRequest">
         <xs:complexType>
             <xs:sequence>

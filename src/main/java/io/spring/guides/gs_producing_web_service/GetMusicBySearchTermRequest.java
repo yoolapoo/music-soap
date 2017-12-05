@@ -38,8 +38,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "name"
 })
-@XmlRootElement(name = "getAllMusicRequest")
-public class GetAllMusicRequest {
+@XmlRootElement(name = "getMusicBySearchTermRequest")
+public class GetMusicBySearchTermRequest {
 
     @XmlElement(required = true)
     protected String name;

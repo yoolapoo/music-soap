@@ -25,7 +25,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="username" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,36 +37,63 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "name"
+    "id",
+    "username"
 })
-@XmlRootElement(name = "getAllMusicRequest")
-public class GetAllMusicRequest {
+@XmlRootElement(name = "returnRequest")
+public class ReturnRequest {
 
     @XmlElement(required = true)
-    protected String name;
+    protected String id;
+    @XmlElement(required = true)
+    protected String username;
 
     /**
-     * Obtient la valeur de la propriété name.
+     * Obtient la valeur de la propriété id.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getName() {
-        return name;
+    public String getId() {
+        return id;
     }
 
     /**
-     * Définit la valeur de la propriété name.
+     * Définit la valeur de la propriété id.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setName(String value) {
-        this.name = value;
+    public void setId(String value) {
+        this.id = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété username.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * Définit la valeur de la propriété username.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setUsername(String value) {
+        this.username = value;
     }
 
 }
