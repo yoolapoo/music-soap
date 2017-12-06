@@ -15,3 +15,7 @@ Pour le lancement du projet, il suffit de lancer le jar music-soap.jar
 avec la commande suivante :
 
 -> java -jar music-soap.jar
+
+
+Pour accèder au WSDL, lancer l'application et allez à l'adresse:
+localhost:8080/ws/music.wsdl
